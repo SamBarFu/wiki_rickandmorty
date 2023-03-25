@@ -1,0 +1,30 @@
+/*
+** TYPOGRAPHY */
+$text-primary: 'urbanist-regular', sans-serif;
+$text-primary-300: 'urbanist-light', sans-serif;
+$text-primary-500: 'urbanist-medium', sans-serif;
+$text-primary-600: 'urbanist-semibold', sans-serif;
+$text-primary-700: 'urbanist-bold', sans-serif;
+$text-primary-900: 'urbanist-black', sans-serif;
+
+
+/*
+** COLORS */
+$dark-blue: #0C0C29;
+$green: #289331;
+$light-green: #73D734;
+$white-green: #CCE198;
+
+$primary-color: $dark-blue;
+$secondary-color: $green;
+$ternary-color: $light-green;
+
+$primary-color-text: #363639;
+
+
+/*
+** Breakpoints */
+$breakpointMobile: 576px;
+$breakpointTablet: 960px;
+$breakpointDesktop: 1200px;
+$breakpointDesktopExtraLarge: 1400px;
