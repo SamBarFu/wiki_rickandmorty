@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { CharacterList } from "../components/CharacterList"
+import { CharacterList } from "@components/CharacterList"
 import { fetcherCharacter, serviceFilterCharacters } from "@services/Character.services";
-import { Search } from '../components/search';
+import { Search } from '@components/search';
 import { ToastContainer, toast } from 'react-toastify';
 import useAxios from '@hooks/useAxios';
-import { Loader } from '../components/Loader';
-import { WrapperError } from '../components/WrapperError';
-import Footer from '../components/Footer';
+import { Loader } from '@components/Loader';
+import { WrapperError } from '@components/WrapperError';
+import Footer from '@components/Footer';
 import logo from '@img/rick-and-morty-logo.webp';
 import noResultsFound from '@img/summer.png';
 import wrong from '@img/rick.png';
