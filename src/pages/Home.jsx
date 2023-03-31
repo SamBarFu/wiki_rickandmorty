@@ -37,8 +37,6 @@ export const Home = () => {
         }
     }
 
-    console.log(data);
-
     useEffect(() => {
         validateEmptyData();
     }, [data]);
