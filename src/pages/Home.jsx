@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CharacterList } from "@components/CharacterList"
 import { fetcherCharacter, serviceFilterCharacters } from "@services/Character.services";
-import { Search } from '@components/search';
+import { Search } from '@components/Search';
 import { ToastContainer, toast } from 'react-toastify';
 import useAxios from '@hooks/useAxios';
 import { Loader } from '@components/Loader';
