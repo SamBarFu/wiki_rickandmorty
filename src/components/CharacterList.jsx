@@ -3,30 +3,24 @@ import { Character } from '@/components/Character';
 import { Loader } from '../components/Loader';
 import { fetcherCharacter } from "@services/Character.services";
 
-export const CharacterList = ({ characters, hasMore, mutate, loading }) => {
+export const CharacterList = ({ characters, hasMore, mutate, loading, loadMore }) => {
 
-  const [loadingMore, setLoadingMore] = useState();
+  const [prev, setPrev] = useState();
   const observer = useRef();
 
   const lastElementRef = useCallback(node => {
 
-    if (loading) return;
+    if (loadMore) return;
 
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        setLoadingMore(true);
-        if (hasMore) {
-          setTimeout(() => {
-            mutate(fetcherCharacter, characters.info.next, {
-              append: true,
-              currentData: characters
-            });
-          }, 2000);
+        setPrev(characters.info.next);
+        if (hasMore && characters.info.next != prev) {
+          mutate(fetcherCharacter, characters.info.next, {
+            append: true
+          });
         }
-        setTimeout(() => {
-          setLoadingMore(false);
-        }, 2000);
       }
     }, []);
 
@@ -50,7 +44,7 @@ export const CharacterList = ({ characters, hasMore, mutate, loading }) => {
             }
           }) : ''
         }
-        {hasMore ? <Loader loading={loadingMore} /> : ''}
+        {hasMore && loadMore ? <Loader loading={loadMore} /> : ''}
       </div>
     </>
   )

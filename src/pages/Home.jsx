@@ -13,7 +13,7 @@ import wrong from '@img/rick.png';
 
 export const Home = () => {
 
-    const { data, loading, mutate, error, hasMore } = useAxios(fetcherCharacter);
+    const { data, loading, mutate, error, hasMore, loadMore } = useAxios(fetcherCharacter);
     const [message, setMessage] = useState('');
 
     const validateEmptyData = () => {
@@ -57,7 +57,7 @@ export const Home = () => {
             <p>{data?.info?.count} resultados</p>
             <WrapperError error={error} message={message}>
                 <Loader loading={loading}>
-                    <CharacterList characters={data} mutate={mutate} loading={loading} hasMore={hasMore} />
+                    <CharacterList characters={data} mutate={mutate} loading={loading} hasMore={hasMore} loadMore={loadMore} />
                 </Loader>
             </WrapperError>
             <Footer />

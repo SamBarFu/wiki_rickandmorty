@@ -1,6 +1,7 @@
 import React, { useState, forwardRef } from 'react';
-import { CharacterDetail } from './CharacterDetail';
-import { Modal } from './Modal';
+import { CharacterDetail } from '@components/CharacterDetail';
+import Modal from '@components/Modal';
+import Image from '@components/Image';
 
 export const Character = forwardRef(({ character }, ref) => {
   const [showModal, setShowModal] = useState(false);
@@ -17,7 +18,7 @@ export const Character = forwardRef(({ character }, ref) => {
     <>
       <div className='character' ref={ref}>
         <div className='inner-wrap' onClick={handleShowDetail}>
-          <img className='character-img' src={character.image} />
+          <Image src={character.image} />
           <div className='character-inner-container'>
             <h1 className='character-name'>{character.name}</h1>
           </div>

@@ -6,6 +6,7 @@ export default function useAxios(fetcher) {
     const [error, setError] = useState(false);
     const [data, setData] = useState({});
     const [hasMore, setHasMore] = useState(false);
+    const [loadMore, setLoadMore] = useState(false);
 
     const fetchData = useCallback(async ({
         fetcher, filter, url, append = false
@@ -22,7 +23,8 @@ export default function useAxios(fetcher) {
                     ...currentData,
                     info: {
                         ...currentData.info,
-                        next: response.info.next
+                        next: response.info.next,
+                        prev: response.info.prev
                     },
                     results: [
                         ...currentData.results,
@@ -39,6 +41,9 @@ export default function useAxios(fetcher) {
     }, []);
 
     const mutate = async (fetcher, url = null, options) => {
+
+        setLoadMore(true);
+
         const { filter, append = false } = options;
 
         await fetchData({
@@ -47,9 +52,13 @@ export default function useAxios(fetcher) {
             url,
             append
         });
+
+        setLoadMore(false);
+
     }
 
     useEffect(() => {
+        console.log('se renderiza');
         setLoading(true);
         fetchData({ fetcher });
         setLoading(false);
@@ -60,7 +69,8 @@ export default function useAxios(fetcher) {
         loading,
         error,
         hasMore,
-        mutate
+        loadMore,
+        mutate,
     }
 
 }

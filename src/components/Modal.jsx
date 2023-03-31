@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaWindowClose } from "react-icons/fa";
 
-export const Modal = ({ children, open = false, handleClose, width = 'auto' }) => {
+export default function Modal({ children, open = false, handleClose, width = 'auto' }) {
 
     if (!open) return;
 
